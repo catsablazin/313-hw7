@@ -1,0 +1,27 @@
+section .data
+    ARRAY_SIZE equ 5
+    DEFAULT_RETURN_VALUE equ 1
+    matrix1 db 1, 0, 0, 0, 0
+    matrix2 db 2, 0, 0, 0, 0
+    result db 0, 0, 0, 0, 0
+
+section .text
+    global _start
+
+_start:
+    mov ecx, 0          ; i = 0
+
+.loop:
+    cmp ecx, ARRAY_SIZE ; compare i with ARRAY_SIZE
+    jge .end_loop       ; if i >= ARRAY_SIZE, exit loop
+
+    mov al, [matrix1 + ecx] ; load matrix1[i] into al
+    add al, [matrix2 + ecx]  ; add matrix2[i] to al
+    mov [result + ecx], al   ; store result[i]
+
+    inc ecx              ; i++
+    jmp .loop            ; repeat the loop
+
+.end_loop:
+    mov eax, DEFAULT_RETURN_VALUE ; return DEFAULT_RETURN_VALUE
+    ret
