@@ -1,3 +1,5 @@
+
+
 section .data
     ARRAY_SIZE equ 5
     DEFAULT_RETURN_VALUE equ 1
